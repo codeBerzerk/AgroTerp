@@ -1,0 +1,36 @@
+.cat-form-container {
+
+  form {
+    margin-bottom: 10px;
+    input, select {
+      border-radius: 10px;
+      margin-right: 10px;
+      width: 150px;
+      border: none;
+      height: 25px;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      padding-left: 10px;
+    }
+    input::placeholder {
+
+      color: var(--text-color);
+    }
+    button {
+      padding: 5px 10px;
+      margin: 0 10px;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      border: 1px solid var(--text-color);
+      cursor: pointer;
+      border-radius: 10px;
+      transition: 0.3s ease-in-out all;
+
+    }
+    button:hover {
+      background-color: var(--text-color);
+      color: var(--background-color);
+      transition: 0.3s ease-in-out all;
+    }
+  }
+}

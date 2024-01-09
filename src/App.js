@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect} from 'react';
+import ThemeSwitcher from "./components/ThemeSwitcher";
+import Navbar from './components/Navbar';
+import './App.scss';
+import {useSelector} from "react-redux";
+import CabinetManager from "./components/CabinetManager";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const theme = useSelector((state) => state.theme.value);
+
+    useEffect(() => {
+        document.body.className = theme;
+    }, [theme]);
+
+    return (
+            <div className="App">
+                <ThemeSwitcher />
+                <Navbar />
+                <CabinetManager />
+            </div>
+    );
 }
 
 export default App;
