@@ -4,19 +4,25 @@ import {addCat, fetchCatFact} from '../features/cabinetSlice/cabinetSlice';
 import {formatDate} from "./CabinetManager";
 import '../styles/CatForm.scss';
 
+export function formatAge(age) {
+    const ageFloat = parseFloat(age);
+    return Number.isInteger(ageFloat) ? ageFloat.toString() : ageFloat.toFixed(1);
+}
+
 const CatForm = ({ cabinetId }) => {
     const [catName, setCatName] = useState('');
     const [catAge, setCatAge] = useState('');
     const dispatch = useDispatch();
     const catBreeds = ["Британська", "Сфінкс", "Сіамська", "Мейн-кун", "Регдолл", "Перська", "Бенгальська", "Скоттиш-фолд", "Сибірська", "Абіссінська"];
     const [catBreed, setCatBreed] = useState(catBreeds[0] || '');
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         formatDate();
         const catData = {
             name: catName,
             breed: catBreed,
-            age: parseInt(catAge, 10),
+            age: formatAge(catAge),
             date: formatDate(new Date()),
         };
 
